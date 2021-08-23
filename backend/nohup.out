@@ -1,0 +1,3 @@
+2021/08/17 19:52:00 Rlimits for file descriptors set to {Current = 8500, Max = 1048576}
+2021/08/17 19:52:02 errors parsing config:
+	invalid instance connection string: must be in the form `project:region:instance-name`; invalid name was "sqlinstance"

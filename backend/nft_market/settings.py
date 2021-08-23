@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+from google.oauth2 import service_account
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
 
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file( "./nft_market/credentials.json" )
 USE_TESTNET = os.environ.get("USE_TESTNET", "1") == "1"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -86,6 +90,8 @@ DATABASES = {
     }
 }
 
+DATABASES["default"]={'NAME': 'opennft', 'USER': 'root', 'PASSWORD': 'bamboo123', 'HOST': '127.0.0.1', 'PORT': 5432, 'CONN_MAX_AGE': 0, 'ENGINE': 'django.db.backends.mysql'}
+
 DATABASE_URL = os.environ.get("DATABASE_URL")
 if DATABASE_URL:
     import dj_database_url
@@ -132,14 +138,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = "/static/"
+STATIC_URL = "/nft_market/static/"
 
-PURESTAKE_API_KEY = os.environ.get("PURESTAKE_API_KEY")
+#PURESTAKE_API_KEY = os.environ.get("PURESTAKE_API_KEY")
+PURESTAKE_API_KEY = '1LFn3w2vuV7ZNpOgwCs1d1jKTzLXLEa6DAL8xYf0'
 PURESTAKE_ALGOD_URL = "https://testnet-algorand.api.purestake.io/ps2"
 PURESTAKE_INDEXER_URL = "https://testnet-algorand.api.purestake.io/idx2"
 
 CORS_ALLOWED_ORIGINS = [
-    "https://nft-market-azure.vercel.app",
+    "https://cifinetwork.com",
+    "http://cifinetwork.com",
     "http://localhost:8080",
     "http://127.0.0.1:8080",
 ]
@@ -182,7 +190,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
-GS_BUCKET_NAME = os.environ.get("GS_BUCKET_NAME", "nft-market-staging-media")
+GS_BUCKET_NAME = os.environ.get("GS_BUCKET_NAME", "opennft-bamboo")
 
 LOGGING = {
     "version": 1,
