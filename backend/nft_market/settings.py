@@ -148,6 +148,8 @@ PURESTAKE_INDEXER_URL = "https://testnet-algorand.api.purestake.io/idx2"
 CORS_ALLOWED_ORIGINS = [
     "https://cifinetwork.com",
     "http://cifinetwork.com",
+    "https://open-nft-gilt.vercel.app"
+    "http://open-nft-gilt.vercel.app"
     "http://localhost:8080",
     "http://127.0.0.1:8080",
 ]
