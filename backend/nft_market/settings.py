@@ -210,6 +210,7 @@ LOGGING = {
     },
 }
 
-CELERY_BROKER_URL = os.getenv(
-    "CELERY_CONFIG_MODULE", "amqp://guest:guest@nft-market-rabbit:5672//"
-)
+CELERY_BROKER_URL = "amqp://guest:guest@0.0.0.0:5672//"
+# os.getenv(
+#    "CELERY_CONFIG_MODULE", "amqp://guest:guest@0.0.0.0:5672//"
+#)
